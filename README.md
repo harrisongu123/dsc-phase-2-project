@@ -1,66 +1,67 @@
-# Phase 2 Project
+# Gu's Construction Pricing Model
 
-Another module down--you're almost half way there!
+### Author: Harrison Gu
 
-![awesome](https://raw.githubusercontent.com/learn-co-curriculum/dsc-phase-2-project-campus/master/halfway-there.gif)
+## Overview
 
-All that remains in Phase 2 is to put our newfound data science skills to use with a large project! This project should take 20 to 30 hours to complete.
-
-## Project Overview
-
-For this project, you will use regression modeling to analyze house sales in a northwestern county.
+This project uses housing data in King County to build a linear regression model to predict the price of houses based on certain features about the house. The model will be used by Gu's Construction company to determine what types of houses they want to build.
 
 ### The Data
 
-This project uses the King County House Sales dataset, which can be found in  `kc_house_data.csv` in the data folder in this repo. The description of the column names can be found in `column_names.md` in the same folder. As with most real world data sets, the column names are not perfectly described, so you'll have to do some research or use your best judgment if you have questions about what the data means.
+This project strictly used the King County House Sales dataset, and used to following features:
 
-It is up to you to decide what data from this dataset to use and how to use it. If you are feeling overwhelmed or behind, we recommend you ignore some or all of the following features:
-
-* date
+* bedrooms
+* bathrooms
+* sqft_living
+* sqft_lot
 * view
-* sqft_above
-* sqft_basement
-* yr_renovated
+* waterfront
 * zipcode
-* lat
-* long
+* basement
 * sqft_living15
 * sqft_lot15
 
-### Business Problem
+### Analysis
 
-It is up to you to define a stakeholder and business problem appropriate to this dataset.
+To get the most accurate model, I made the following adjustments to the data:
 
-If you are struggling to define a stakeholder, we recommend you complete a project for a real estate agency that helps homeowners buy and/or sell homes. A business problem you could focus on for this stakeholder is the need to provide advice to homeowners about how home renovations might increase the estimated value of their homes, and by what amount.
+* Remove outliers
+* Log transform
+* One hot encode categorical variables
+* Min-max scale continuous variables
+* Remove features with insignificant p-values
+* Check for interactions between variables
 
-## Deliverables
+### Conclusion
 
-There are three deliverables for this project:
+Zipcodes most highly correlated with price:
 
-* A **GitHub repository**
-* A **Jupyter Notebook**
-* A **non-technical presentation**
+-98039 
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic for instructions on creating and submitting your deliverables. Refer to the rubric associated with this assignment for specifications describing high-quality deliverables.
+-98004
 
-### Key Points
+-98112 
 
-* **Your deliverables should explicitly address each step of the data science process.** Refer to [the Data Science Process lesson](https://github.com/learn-co-curriculum/dsc-data-science-processes) from Topic 19 for more information about process models you can use.
+-98109
 
-* **Your Jupyter Notebook should demonstrate an iterative approach to modeling.** This means that you begin with a basic model, evaluate it, and then provide justification for and proceed to a new model. After you finish refining your models, you should provide 1-3 paragraphs discussing your final model - this should include interpreting at least 3 important parameter estimates or statistics.
+-98102 
 
-* **Based on the results of your models, your notebook and presentation should discuss at least two features that have strong relationships with housing prices.**
+Features most highly correlated with price:
 
-## Getting Started
+-sqft_living 
 
-Start on this project by forking and cloning [this project repository](https://github.com/learn-co-curriculum/dsc-phase-2-project) to get a local copy of the dataset.
+-waterfront 
 
-We recommend structuring your project repository similar to the structure in [the Phase 1 Project Template](https://github.com/learn-co-curriculum/dsc-project-template). You can do this either by creating a new fork of that repository to work in or by building a new repository from scratch that mimics that structure.
+-sqft_living15 
 
-## Project Submission and Review
+Features with negative correlation with price:
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic to learn how to submit your project and how it will be reviewed. Your project must pass review for you to progress to the next Phase.
+-bedrooms 
 
-## Summary
+-floors 
 
-This project will give you a valuable opportunity to develop your data science skills using real-world data. The end-of-phase projects are a critical part of the program because they give you a chance to bring together all the skills you've learned, apply them to realistic projects for a business stakeholder, practice communication skills, and get feedback to help you improve. You've got this!
+-basement 
+
+### Next Steps
+
+For further investigation, I will do cost benefit analysis for all the features. For example, homes in zipcode 98039 sell for the highest price, but buying land in that area could also be more expensive, thus reducing the net benefit of building a house there.
